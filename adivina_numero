@@ -14,6 +14,22 @@ def rango(n1,n2):
                 break
     return n
 
+def rango_valido(nu):
+    while True:
+         try:
+             R=(nu).split(",")
+             Rango=[int(R[0]),int(R[1])]
+             Rango.sort()
+         except:
+             nu=input("Establece el rango (escribir ambos números separados por una coma): ")
+             pass
+         else:
+            break
+    return Rango
+        
+        
+        
+
 def aprox(difer,n1,n2,vis):
     grado_desvia=round(difer*100/((abs(n2-n1))+1),5)
     if n1==n2:
@@ -43,13 +59,9 @@ def intent(n):
 
 while True:
     print("ADIVINA EL NÚMERO")
-    nu=(input("Establece el rango (escribir ambos números separados por una coma): "))#SE NECESITA ESTABLECER LA EXCEPCION PARA EVITAR VALORES NO ENTEROS
-    R=(nu).split(",")#AQUI LOS VALORES DE "R" SON TIPO CADENA 
-    Rango=[int(R[0]),int(R[1])]#LOS VALORES DE "R" SE TRANSFORMAN EN ENTEROS PARA QUE PUEDAN SER ORDENADOS NUMERICAMENTE MEDIANTE "sort".
-    Rango.sort()
-    print(Rango)
+    nu=rango_valido(input("Establece el rango (escribir ambos números separados por una coma): "))#SE NECESITA ESTABLECER LA EXCEPCION PARA EVITAR VALORES NO ENTEROS
     vis=ns(input("¿Desea visualizar el grado de desviacion?: "))
-    n1=Rango[0];n2=Rango[1]
+    n1=nu[0];n2=nu[1]
     num_elect=random.randint(n1,n2)
     intentos=0
     while True:
@@ -77,3 +89,4 @@ while True:
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
+
