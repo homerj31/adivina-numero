@@ -38,7 +38,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
                 print("TE ESTAS ALEJANDO")
         intentos+=1
         if intentos>(MAX/2):
-            print(chr(7),("LO SIENTO: Has superado el límite de intentos permitido para este nivel("+str(int(MAX/2))+" intentos)."))
+            print(("PERDISTE: Superaste el límite de intentos permitido para este nivel("+str(int(MAX/2))+" intentos)."),(chr(7)))
             break
         diferencia=abs(tu_numero-numero_elegido)
         #print(diferencia)
