@@ -37,13 +37,19 @@ NIVEL 4: ENTRE 0 Y 100000""")
             else:
                 print("TE ESTAS ALEJANDO")
         intentos+=1
+        if intentos>(MAX/2):
+            print(chr(7),("LO SIENTO: Has superado el límite de intentos permitido para este nivel("+str(int(MAX/2))+" intentos)."))
+            break
         diferencia=abs(tu_numero-numero_elegido)
         #print(diferencia)
-    print("¡BINGO!")
-    print("Lo lograste en",intentos,"intentos")
+    if tu_numero==numero_elegido:
+        print("¡BINGO!")
+        print("Lo lograste en",intentos,"intentos")
     conti=ns(input("¿Jugar otra vez?: "))
     if conti==("n"):
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
+
+
