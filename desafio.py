@@ -27,10 +27,10 @@ NIVEL 4: ENTRE 0 Y 100000""")
     level=OKI(input("Escriba aquí su opción (de 1 a 4): "))
     while level!=1 and level!=2 and level!=3 and level!=4:
         level=OKI(input("Escriba un número comprendido entre 1 y 4: "))
-    MIN=0
+        
     MAX=10**(level+1)
     Di=(" 0 y "+str(MAX))
-    numero_elegido=random.randint(MIN,MAX)
+    numero_elegido=random.randint(0,MAX)
     #print(numero_elegido)
     intentos=0
     tu_numero=limites(OKI(input("Escribe un numero comprendido entre"+Di+": ")),MAX)
@@ -66,6 +66,8 @@ NIVEL 4: ENTRE 0 Y 100000""")
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
+
+
 
 
 
