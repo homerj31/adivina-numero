@@ -1,6 +1,5 @@
 from VALID import OKI, ns
 import random
-import pickle
 import subprocess
 
 def limites(n,MAX):
@@ -33,13 +32,13 @@ NIVEL 4: ENTRE 0 Y 100000""")
     numero_elegido=random.randint(0,MAX)
     #print(numero_elegido)
     intentos=0
-    tu_numero=limites(OKI(input("Escribe un numero comprendido entre"+Di+": ")),MAX)
+    tu_numero=limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX)
     diferencia=abs(tu_numero-numero_elegido)
     num_anterior=tu_numero
     intentos+=1
     repes=1 #"repes" contabiliza el número de veces seguidas que se introduce un número.
     while tu_numero!=numero_elegido:
-        tu_numero=(limites(OKI(input("Escribe un numero comprendido entre"+Di+": ")),MAX))
+        tu_numero=(limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX))
         if abs(tu_numero-numero_elegido)>0:
             if tu_numero!=num_anterior:
                 if (abs(tu_numero-numero_elegido))<diferencia:
@@ -66,12 +65,3 @@ NIVEL 4: ENTRE 0 Y 100000""")
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
-
-
-
-
-
-
-
-
-
