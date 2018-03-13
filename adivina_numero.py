@@ -1,92 +1,84 @@
+from VALID import OKI, ns
 import random
-from VALID import ns, OKI
+import pickle
 import subprocess
 
-def rango(n1,n2):
-    while True:
-        n=input("Introduce un número entre "+str(n1)+" y "+str(n2)+": ")#("("+str(int(timer/7)),"semanas y",timer%7,"dias)")
-        try:
-            n=int(n)
-        except:
-            pass
-        else:
-            if n>=n1 and n<=n2:
-                break
+def limites(n,MAX):
+    while n<0 or n>MAX:
+        n=OKI(input("ERROR: El número ha de estar entre 0 y"+str(" "+str(MAX)+": ")))
     return n
 
-def rango_valido(nu):
-    while True:
-         try:
-             R=(nu).split(",")
-             Rango=[int(R[0]),int(R[1])]
-             Rango.sort()
-         except:
-             nu=input("Establece el rango (escribir ambos números separados por una coma): ")
-             pass
-         else:
-            break
-    return Rango
-        
-        
-        
-
-def aprox(difer,n1,n2,vis):
-    grado_desvia=round(difer*100/((abs(n2-n1))+1),5)
-    if n1==n2:
-        pass
+def sing_plu(f):
+    if f>1:
+        co=("intentos")
     else:
-        if grado_desvia<25:
-            if vis==("s"):
-                print("GRADO DE DESVIACION:",grado_desvia)
-            contes=("UN POCO MAS: YA CASI LO TIENES")
-        if grado_desvia>=25 and grado_desvia<50:
-            if vis==("s"):
-                print("GRADO DE DESVIACION:",grado_desvia)
-            contes=("NO ESTA MAL: SIGUE PROBANDO")
-        if grado_desvia>=50 and grado_desvia<100:
-            if vis==("s"):
-                print("GRADO DE DESVIACION",grado_desvia)
-            contes=("DEMASIADO LEJOS")
-    return contes
-    
+        co=("intento")
+    return co
 
-def intent(n):
-    if n>1:
-        n=("intentos")
-    else:
-        n=("intento")
-    return n
+def paramar(n):
+    if n==1:
+        m=0
+    elif n==2:
+        m=1
+    elif n==3:
+        m=2
+    elif n==4:
+        m=3
+    return m
 
 while True:
-    print("ADIVINA EL NÚMERO")
-    nu=rango_valido(input("Establece el rango (escribir ambos números separados por una coma): "))#SE NECESITA ESTABLECER LA EXCEPCION PARA EVITAR VALORES NO ENTEROS
-    vis=ns(input("¿Desea visualizar el grado de desviacion?: "))
-    n1=nu[0];n2=nu[1]
-    num_elect=random.randint(n1,n2)
-    intentos=0
-    while True:
-        tu_numero=rango(n1,n2)
-        if tu_numero!=num_elect:
-            intentos+=1
-            difer=abs(tu_numero-num_elect)
-            aproxi=aprox(difer,n1,n2,vis)
-            print(aproxi)
-        else:
-            print("¡BINGO!")
-            intentos+=1
-            if intentos==1:
-                P=100
-            else:
-                no_inte=((n2-n1)+1)-intentos
-                P=round(no_inte*100/((n2-n1)+1))
-            ntents=intent(intentos)
-            print("Lo conseguiste en",intentos,ntents)
-            print("TU PUNTUACIÓN:",P/10,"sobre 10")
-            break
+    marca=pickle.load(open("mejor_marca","rb"))
+    print("ADIVINA NUMERO-SUPER DESAFIO")
+    print("""En este juego el usuario ha de adivinar un número,escogido
+al azar por la computadora, dentro de un rango determinado""")
+    print("""ESCOJA EL NIVEL DE DIFICULTAD
+NIVEL 1: ENTRE 0 Y 100
+NIVEL 2: ENTRE 0 Y 1000
+NIVEL 3: ENTRE 0 Y 10000
+NIVEL 4: ENTRE 0 Y 100000""")
+    level=OKI(input("Escriba aquí su opción (de 1 a 4): "))
+    while level!=1 and level!=2 and level!=3 and level!=4:
+        level=OKI(input("Escriba un número comprendido entre 1 y 4: "))
         
-    preg=ns(input("¿Jugar otra vez?: "))
-    if preg==("n"):
+    MAX=10**(level+1)
+    Di=(" 0 y "+str(MAX))
+    numero_elegido=random.randint(0,MAX)
+    intentos=0
+    tu_numero=limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX)
+    diferencia=abs(tu_numero-numero_elegido)
+    num_anterior=tu_numero
+    intentos+=1
+    repes=1 #"repes" contabiliza el número de veces seguidas que se introduce un número.
+    while tu_numero!=numero_elegido:
+        tu_numero=(limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX))
+        if abs(tu_numero-numero_elegido)>0:
+            if tu_numero!=num_anterior:
+                if (abs(tu_numero-numero_elegido))<diferencia:
+                    print("TE ESTAS ACERCANDO")
+                else:
+                    print("TE ESTAS ALEJANDO")
+            else:
+                repes+=1
+                print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
+        diferencia=abs(tu_numero-numero_elegido)            
+        num_anterior=tu_numero   
+        intentos+=1
+        if intentos==(MAX/2):
+            print(("PERDISTE: Superaste el límite de intentos permitido para este nivel("+str(int((MAX/2)))+" intentos)."),(chr(7)))
+            print("La solución era",numero_elegido)
+            break
+    if tu_numero==numero_elegido:
+        print("¡BINGO!")
+        print("Lo lograste en",intentos,sing_plu(intentos))
+        posi_marca=paramar(level)
+        if intentos<marca[posi_marca]:
+            marca[posi_marca]=intentos
+            pickle.dump(marca,open("mejor_marca","wb"))
+            print("¡¡NUEVO RECORD!!")
+        print("MEJOR MARCA: ",marca[posi_marca])
+    conti=ns(input("¿Jugar otra vez?: "))
+    if conti==("n"):
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
-
+    
