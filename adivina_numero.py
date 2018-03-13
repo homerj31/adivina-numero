@@ -16,14 +16,7 @@ def sing_plu(f):
     return co
 
 def paramar(n):
-    if n==1:
-        m=0
-    elif n==2:
-        m=1
-    elif n==3:
-        m=2
-    elif n==4:
-        m=3
+    m=n-1
     return m
 
 while True:
@@ -82,3 +75,4 @@ NIVEL 4: ENTRE 0 Y 100000""")
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
+
