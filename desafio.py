@@ -1,3 +1,4 @@
+#PARA LA EJECUCIÓN DE ESTE CODIGO SE PRECISA DEL ARCHIVO "mejor_marca" PRESENTE EN ESTE REPOSITORIO ("adivina-numero")
 from VALID import OKI, ns
 import random
 import pickle
