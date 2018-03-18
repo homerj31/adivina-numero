@@ -1,5 +1,6 @@
 from VALID import OKI, ns
 import random
+import pickle
 import subprocess
 
 def limites(n,MAX):
@@ -14,7 +15,12 @@ def sing_plu(f):
         co=("intento")
     return co
 
+def paramar(n):
+    m=n-1
+    return m
+
 while True:
+    marca=pickle.load(open("mejor_marca","rb"))
     print("ADIVINA NUMERO-SUPER DESAFIO")
     print("""En este juego el usuario ha de adivinar un número,escogido
 al azar por la computadora, dentro de un rango determinado""")
@@ -30,7 +36,6 @@ NIVEL 4: ENTRE 0 Y 100000""")
     MAX=10**(level+1)
     Di=(" 0 y "+str(MAX))
     numero_elegido=random.randint(0,MAX)
-    #print(numero_elegido)
     intentos=0
     tu_numero=limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX)
     diferencia=abs(tu_numero-numero_elegido)
@@ -48,20 +53,26 @@ NIVEL 4: ENTRE 0 Y 100000""")
             else:
                 repes+=1
                 print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
-                
-        num_anterior=tu_numero     
+        diferencia=abs(tu_numero-numero_elegido)            
+        num_anterior=tu_numero   
         intentos+=1
-        if intentos>(MAX/2):
-            print(("PERDISTE: Superaste el límite de intentos permitido para este nivel("+str(int((MAX/2)+1))+" intentos)."),(chr(7)))
+        if intentos==(MAX/2):
+            print(("PERDISTE: Superaste el límite de intentos permitido para este nivel("+str(int((MAX/2)))+" intentos)."),(chr(7)))
+            print("La solución era",numero_elegido)
             break
-        diferencia=abs(tu_numero-numero_elegido)
-        #print(diferencia)
     if tu_numero==numero_elegido:
         print("¡BINGO!")
         print("Lo lograste en",intentos,sing_plu(intentos))
+        posi_marca=paramar(level)
+        if intentos<marca[posi_marca]:
+            marca[posi_marca]=intentos
+            pickle.dump(marca,open("mejor_marca","wb"))
+            print("¡¡NUEVO RECORD!!")
+        print("MEJOR MARCA: ",marca[posi_marca])
     conti=ns(input("¿Jugar otra vez?: "))
     if conti==("n"):
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
+
