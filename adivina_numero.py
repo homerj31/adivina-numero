@@ -1,3 +1,4 @@
+#PARA LA EJECICION DE ESTE CODIGO SE PRECISA EL ARCHIVO "mejor_marca" Y EL MODULO "VALID.py", PRESENTES ENE ESTE REPOSITORIO ("adivina-numero").
 from VALID import OKI, ns
 import random
 import pickle
@@ -75,4 +76,5 @@ NIVEL 4: ENTRE 0 Y 100000""")
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
+
 
