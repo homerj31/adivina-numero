@@ -89,7 +89,7 @@ while True:
         puntuacion[4]=P
         print("")
         print("¡NUEVO RECORD!")
-    print("MEJOR PUNTUACION: ",puntuacion[4])
+    print("MEJOR PUNTUACION PARA ESTE NIVEL: ",puntuacion[4])
     pickle.dump(puntuacion,open("mejor_marca","wb"))
     preg=ns(input("¿Jugar otra vez?: "))
     if preg==("n"):
