@@ -28,10 +28,7 @@ def rango_valido(nu):
             break
     return Rango
         
-        
-        
-
-def aprox(difer,n1,n2,vis):
+ def aprox(difer,n1,n2,vis):
     grado_desvia=round(difer*100/((abs(n2-n1))+1),5)
     if n1==n2:
         pass
