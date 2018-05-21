@@ -69,12 +69,13 @@ NIVEL 4: ENTRE 0 Y 100000""")
             marca[posi_marca]=intentos
             pickle.dump(marca,open("mejor_marca","wb"))
             print("¡¡NUEVO RECORD!!")
-        print("MEJOR MARCA: ",marca[posi_marca])
+        print("MEJOR MARCA PARA ESTE NIVEL: ",marca[posi_marca])
+        if marca[posi_marca]==1:
+            marca[posi_marca]=MAX
+            pickle.dump(marca,open("mejor_marca","wb"))
     conti=ns(input("¿Jugar otra vez?: "))
     if conti==("n"):
         break
     else:
         subprocess.call(["cmd.exe","/C","cls"])
     
-
-
