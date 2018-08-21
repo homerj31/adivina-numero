@@ -1,3 +1,4 @@
+#PARA LA EJECUCIÓN DE ESTE PROGRAMA SE REQUIERE EL ARCHIVO "mejor_marca" PRESENTE EN EL REPOSITORIO.
 import random
 import pickle
 import subprocess
