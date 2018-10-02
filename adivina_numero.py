@@ -36,12 +36,14 @@ while True:
     print("ADIVINA NUMERO-SUPER DESAFIO")
     print("""En este juego el usuario ha de adivinar un número,escogido
 al azar por la computadora, dentro de un rango determinado.""")
+    print("")
     print("""ESCOJA EL NIVEL DE DIFICULTAD
 NIVEL 1: ENTRE 0 Y 100
 NIVEL 2: ENTRE 0 Y 1000
 NIVEL 3: ENTRE 0 Y 10000
 NIVEL 4: ENTRE 0 Y 100000""")
     level=OKI(input("Escriba aquí su opción (de 1 a 4): "))
+    print("")
     while level!=1 and level!=2 and level!=3 and level!=4:
         #PEDIMOS NIVEL DE DIFICULTAD
         level=OKI(input("Escriba un número comprendido entre 1 y 4: "))
