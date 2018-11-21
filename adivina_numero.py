@@ -51,7 +51,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
     MAX=10**(level+1) #ESTABLECEMOS EL MAXIMO EN FUNCIÓN DEL NIVEL
     Di=(" 0 y "+str(MAX))
     numero_elegido=random.randint(0,MAX)#NÚMERO 'ESCOGIDO' POR LA COMPUTADORA
-    print(numero_elegido)
+    #print(numero_elegido)
     intentos=0 #CONTADOR DE INTENTOS
     #PRIMERA ELECCIÓN DE USUARIO (FUERA DE BUCLE).
     tu_numero=limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX)
