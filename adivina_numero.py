@@ -1,5 +1,6 @@
 #PARA LA EJECUCIÓN DE ESTE PROGRAMA SE REQUIERE EL ARCHIVO "mejor_marca" PRESENTE EN EL REPOSITORIO.
 import random
+#import os, sys
 import pickle
 import subprocess
 
@@ -30,6 +31,8 @@ def sing_plu(f):
 def paramar(n):
     m=n-1
     return m
+
+sop=sys.plattform
 
 while True:
     marca=pickle.load(open("mejor_marca","rb"))
