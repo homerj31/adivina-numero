@@ -1,8 +1,7 @@
-#PARA LA EJECUCIÓN DE ESTE PROGRAMA SE REQUIERE EL ARCHIVO "mejor_marca" PRESENTE EN EL REPOSITORIO.
+#AVISO: PARA LA EJECUCIÓN DE ESTE PROGRAMA, SE REQUIERE EL ARCHIVO "mejor_marca" PRESENTE EN ESTE REPOSITORIO.
 import random
 import pickle
 import subprocess
-
 
 def ns(c):
     while c!=("s") and c!=("n"):
@@ -32,6 +31,7 @@ def paramar(n):
     m=n-1
     return m
 
+
 while True:
     marca=pickle.load(open("mejor_marca","rb"))
     print("ADIVINA NUMERO-SUPER DESAFIO")
@@ -51,7 +51,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
         
     MAX=10**(level+1) #ESTABLECEMOS EL MAXIMO EN FUNCIÓN DEL NIVEL
     Di=(" 0 y "+str(MAX))
-    numero_elegido=random.randint(0,MAX)#NÚMERO 'ESCOjIDO' POR LA COMPUTADORA
+    numero_elegido=random.randint(0,MAX)#NÚMERO 'ESCOGIDO' POR LA COMPUTADORA
     #print(numero_elegido)
     intentos=0 #CONTADOR DE INTENTOS
     #PRIMERA ELECCIÓN DE USUARIO (FUERA DE BUCLE).
@@ -63,7 +63,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
     while tu_numero!=numero_elegido:
         #ULTERIORES ELECCIONES DE USUARIO (DENTRO DE BUCLE).
         tu_numero=(limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX))
-        if abs(tu_numero-numero_elegido)>0:
+        if abs(tu_numero-numero_elegido)>0:#????
             if tu_numero!=num_anterior:
                 if (abs(tu_numero-numero_elegido))<diferencia:
                     print("TE ESTAS ACERCANDO")
@@ -73,6 +73,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
             else:
                 repes+=1
                 print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
+    
         diferencia=abs(tu_numero-numero_elegido)            
         num_anterior=tu_numero   
         intentos+=1 #SE SUMA 1 POR CADA INTENTO
