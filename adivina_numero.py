@@ -69,6 +69,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
                     print("TE ESTAS ACERCANDO")
                 else:
                     print("TE ESTAS ALEJANDO")
+                repes=1
             else:
                 repes+=1
                 print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
