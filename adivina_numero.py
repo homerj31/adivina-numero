@@ -78,7 +78,7 @@ NIVEL 4: ENTRE 0 Y 100000""")
         num_anterior=tu_numero   
         intentos+=1 #SE SUMA 1 POR CADA INTENTO
         if intentos==(MAX/2):#SI EL NÚMERO DE INTENTOS ES IGUAL A LA MITAD DE NÚMEROS, FIN DEL JUEGO.
-            print(("PERDISTE: Superaste el límite de intentos permitido para este nivel("+str(int((MAX/2)))+" intentos)."),(chr(7)))
+            print(("PERDISTE: Alcanzaste el límite de intentos permitido para este nivel("+str(int((MAX/2)))+" intentos)."),(chr(7)))
             print("La solución era",numero_elegido)
             break
     if tu_numero==numero_elegido:#SI EL USUARIO ACIERTA...
