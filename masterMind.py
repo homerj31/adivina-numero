@@ -3,7 +3,7 @@
 
 import random 
 codigo="".join(list(map(lambda x: str(x), random.sample(range(0,9), 4))))
-#print(codigo)
+print(codigo)
 
 def numero():
 	while True:
@@ -13,6 +13,7 @@ def numero():
 			break
 		else:
 			print("Asegurese de que su código contienen 4 dígitos.")
+			
 
 print ("##### Bienvenido/a al Mastermind! ######\n")
 
@@ -33,7 +34,7 @@ while propuesta != codigo:
 		elif propuesta[i] in codigo:
 			coincidencias = coincidencias + 1
 	
-	print ("Tu propuesta (", propuesta, ") tiene", aciertos, "aciertos y", coincidencias, "coincidencias.")
+	print("Tu propuesta ({}) tiene {} aciertos y {} coincidencias.".format(propuesta,aciertos,coincidencias))
 	propuesta = numero()
 
 print ("Felicitaciones! Adivinaste el codigo en", intentos, "intentos.")
