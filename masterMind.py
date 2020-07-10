@@ -3,7 +3,7 @@
 
 import random 
 codigo="".join(list(map(lambda x: str(x), random.sample(range(0,9), 4))))
-print(codigo)
+#print(codigo)
 
 def numero():
 	while True:
