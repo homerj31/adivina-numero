@@ -7,7 +7,7 @@ print(codigo)
 
 def numero():
 	while True:
-		codi = raw_input("¿Que codigo propones?: ")
+		codi = input("¿Que codigo propones?: ")
 		if len(codi) == 4:
 			return codi
 			break
@@ -20,8 +20,6 @@ print ("##### Bienvenido/a al Mastermind! ######\n")
 print ("Tienes que adivinar un numero de 4 cifras distintas")
 
 propuesta = numero()
-
-# bucle hasta que el numero introducido coincida con el codigo aleatorio
 
 intentos = 0
 
