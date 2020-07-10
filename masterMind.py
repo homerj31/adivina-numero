@@ -13,7 +13,6 @@ def numero():
 			break
 		else:
 			print("Asegurese de que su código contienen 4 dígitos.")
-			
 
 print ("##### Bienvenido/a al Mastermind! ######\n")
 
