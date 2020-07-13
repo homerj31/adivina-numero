@@ -7,6 +7,9 @@ root = Tk()
 root.title("Desactiva la bomba")
 root.geometry("490x650")
 
-Label(root,width=58,height=6,bg="black").place(x=11,y=23)
+time_display = Label(root,width=58,height=3,bg="black")
+time_display.place(x=11,y=33)
+display = Entry(root,bg='black',width=33,font=('arial',19,'bold'))
+display.place(x=10,y=82)
 
 root.mainloop()
