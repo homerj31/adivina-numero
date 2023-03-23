@@ -52,35 +52,37 @@ NIVEL 4: ENTRE 0 Y 100000""")
     MAX=10**(level+1) #ESTABLECEMOS EL MAXIMO EN FUNCIÓN DEL NIVEL
     Di=(" 0 y "+str(MAX))
     numero_elegido=random.randint(0,MAX)#NÚMERO 'ESCOGIDO' POR LA COMPUTADORA
-    #print(numero_elegido)
+    #print("El mumero elegido por la maquina es el :" + str(numero_elegido))
     intentos=0 #CONTADOR DE INTENTOS
     #PRIMERA ELECCIÓN DE USUARIO (FUERA DE BUCLE).
     tu_numero=limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX)
-    diferencia=abs(tu_numero-numero_elegido)#DISTANCIA CON EL NÚMERO 'ELEGIDO' POR LA COMPUTADORA
+    #diferencia=abs(tu_numero-numero_elegido)#DISTANCIA CON EL NÚMERO 'ELEGIDO' POR LA COMPUTADORA
     num_anterior=tu_numero
     intentos+=1
     repes=1 #"repes" contabiliza el número de veces seguidas que se introduce un número.
     while tu_numero!=numero_elegido:
-        #ULTERIORES ELECCIONES DE USUARIO (DENTRO DE BUCLE).
-        tu_numero=(limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX))
-        if abs(tu_numero-numero_elegido)>0:#????
-            if tu_numero!=num_anterior:
-                if (abs(tu_numero-numero_elegido))<diferencia:
-                    print("TE ESTAS ACERCANDO")
-                else:
-                    print("TE ESTAS ALEJANDO")
-                repes=1
+
+        #if abs(tu_numero-numero_elegido)>0:#????
+        if (tu_numero!=num_anterior or intentos==1):
+            if (abs(tu_numero))<numero_elegido:
+                print("el numero que buscamos es mayor")
             else:
-                repes+=1
-                print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
+                print("el numero que buscamos es menor")
+            repes=1
+        else:
+            if (intentos>1):
+               repes+=1
+               print("HAS INTRODUCIDO EL MISMO NÚMERO",repes,"VECES SEGUIDAS")
     
-        diferencia=abs(tu_numero-numero_elegido)            
+        #diferencia=abs(tu_numero-numero_elegido)            
         num_anterior=tu_numero   
         intentos+=1 #SE SUMA 1 POR CADA INTENTO
         if intentos==(MAX/2):#SI EL NÚMERO DE INTENTOS ES IGUAL A LA MITAD DE NÚMEROS, FIN DEL JUEGO.
             print(("PERDISTE: Alcanzaste el límite de intentos permitido para este nivel("+str(int((MAX/2)))+" intentos)."),(chr(7)))
             print("La solución era",numero_elegido)
             break
+        #ULTERIORES ELECCIONES DE USUARIO (DENTRO DE BUCLE).
+        tu_numero=(limites(OKI(input("Escribe un número comprendido entre"+Di+": ")),MAX))        
     if tu_numero==numero_elegido:#SI EL USUARIO ACIERTA...
         print("¡BINGO!")
         print("Lo lograste en",intentos,sing_plu(intentos))
